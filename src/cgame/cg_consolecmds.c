@@ -1292,7 +1292,7 @@ void CG_ForceTapOut_f(void)
 /**
  * @brief CG_Kill_f
  * Client-side handler for the /kill command.
- * When cg_selfKillSpawnProtection is enabled, blocks self-kill while spawn
+ * When cg_allowSelfKillSpawnProtection is 0 (default), blocks self-kill while spawn
  * invulnerability is active and shows a message, replicating the old server-side behaviour.
  */
 static void CG_Kill_f(void)
@@ -1302,7 +1302,7 @@ static void CG_Kill_f(void)
 		return;
 	}
 
-	if (cg_selfKillSpawnProtection.integer && cg.snap->ps.powerups[PW_INVULNERABLE] > cg.time)
+	if (!cg_allowSelfKillSpawnProtection.integer && cg.snap->ps.powerups[PW_INVULNERABLE] > cg.time)
 	{
 		// CG_CenterPrint is equivalent to the server sending "cp" via trap_SendServerCommand
 		CG_CenterPrint("You are invulnerable - ^3/kill^7 is disabled.");
