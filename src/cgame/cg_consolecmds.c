@@ -1297,8 +1297,14 @@ void CG_ForceTapOut_f(void)
  */
 static void CG_Kill_f(void)
 {
+	if (!cg.snap)
+	{
+		return;
+	}
+
 	if (cg_selfKillSpawnProtection.integer && cg.snap->ps.powerups[PW_INVULNERABLE] > cg.time)
 	{
+		// CG_CenterPrint is equivalent to the server sending "cp" via trap_SendServerCommand
 		CG_CenterPrint("You are invulnerable - ^3/kill^7 is disabled.");
 		return;
 	}
