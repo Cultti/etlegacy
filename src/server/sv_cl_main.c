@@ -253,9 +253,9 @@ void SV_CL_CheckForResend(void)
 
 			Info_SetValueForKey(info, "name", sv_etltv_clientname->string);
 			Info_SetValueForKey(info, "rate", "90000");
-			// Record every frame of a 50 Hz competition server. The master
-			// clamps this request to its sv_fps when it runs at a lower rate.
-			Info_SetValueForKey(info, "snaps", "50");
+			// Request up to 125 snapshots/sec. The master clamps this to its
+			// sv_fps, so a 50 Hz master still sends at most 50 snapshots/sec.
+			Info_SetValueForKey(info, "snaps", "125");
 			Info_SetValueForKey(info, "cl_maxpackets", va("%i", SV_CL_MAXPACKETS));
 			Info_SetValueForKey(info, "cg_uinfo", "0 0 40");
 

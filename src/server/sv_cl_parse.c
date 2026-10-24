@@ -121,7 +121,7 @@ void SV_CL_SystemInfoChanged(void)
 	// Keep the relay simulation on the master's clock as well as requesting
 	// its snapshots. Do not change the playback clock of recorded TV demos.
 	Cvar_SetValue("sv_fps", svcl.sv_fps);
-	Com_Printf("ETLTV: master frame rate %d Hz, snapshot request 50 Hz\n", svcl.sv_fps);
+	Com_Printf("ETLTV: master frame rate %d Hz, snapshot request 125 Hz\n", svcl.sv_fps);
 
 	s = Info_ValueForKey(systemInfo, "sv_cheats");
 
